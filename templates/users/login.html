@@ -17,15 +17,15 @@
 
         <div class="col-md-10 mx-auto col-lq-5">
 
-                    <form class="p-4 p-md-5 border-0 rounded-3 bg-secondary">
-            <img class="rounded mx-auto d-block mb-3 w-25" src="{% static 'img/67fb70940639a0c2cb2bff5f4b99c798.png'%}" alt="">
-            <div class="form-floating">
+            <form action="{% url 'login' %}" class="p-4 p-md-5 border-0 rounded-3 bg-secondary">
+                <img class="rounded mx-auto d-block mb-3 w-25" src="{% static 'img/67fb70940639a0c2cb2bff5f4b99c798.png'%}" alt="">
+                <div class="form-floating">
 
-              <input type="email" class="form-control" id="inputEmail" placeholder="E-mail"/>
+              <input type="email" class="form-control" id="inputEmail" placeholder="E-mail" name="email" />
               <label for="inputEmail">E-mail</label>
             <div class="form-floating mt-3 mb-3">
 
-              <input type="password" class="form-control" id="inputPassword" placeholder="Senha"/>
+              <input type="password" class="form-control" id="inputPassword" placeholder="Senha" name="password" />
               <label for="inputPassword">Senha</label>
             </div>
             <div class="checkbox mb-3">
