@@ -3,16 +3,9 @@
   padding: 0;
 }
 
+
 .bg-adm{
   background-color: rgb(134, 134, 136);
-}
-
-.bg-navfooter{
-  background-color: rgb(44, 41, 41);
-}
-
-.navbar-navfooter{
-  background-color: rgb(44, 41, 41);
 }
 
 ::-webkit-scrollbar {
