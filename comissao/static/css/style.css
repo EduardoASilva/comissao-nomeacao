@@ -1,0 +1,40 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.bg-adm{
+  background-color: rgb(134, 134, 136);
+}
+
+.bg-navfooter{
+  background-color: rgb(44, 41, 41);
+}
+
+.navbar-navfooter{
+  background-color: rgb(44, 41, 41);
+}
+
+::-webkit-scrollbar {
+  width: 0px;               /* width of the entire scrollbar */
+}
+
+.nav{
+  background-color: rgba(0, 0, 0, 0.774);
+}
+
+.navbar-brand {
+  width: 250px;
+}
+
+#login{
+  width: 50px;
+}
+
+#botton{
+ color: gold;
+ font-weight: bold;
+ border: none;
+ height: 27px;
+
+}
