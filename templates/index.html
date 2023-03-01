@@ -10,12 +10,12 @@
             overflow-y: auto;
             justify-content: center;
           ">
-        <div class="bg-adm position-fixed rounded" style="width: 20.1%; margin-left: -5px">
-          <h3 class="">Lista de cargos</h3>
+        <div class="d-flex bg-adm">
+          <h4 class="m-auto">Lista de cargos</h4>
         </div>
         <div class="" style="margin-top: 50px">
           {% for cargo in cargos %}
-            <button id="botton" class="btn btn-primary btn-sm mb-1 col-12" style="background-color: darkslategrey">{{ cargo.name }}</button>
+            <button id="botton" class="btn btn-primary btn-sm mb-1 col-12 " style="background-color: darkslategrey">{{ cargo.name }}</button>
           {% endfor %}
         </div>
       </div>
@@ -38,7 +38,7 @@
         </div>
         
       
-        <button class="w-100 btn btn-sm btn-success bottom-center" data-toggle="button" style="">Finalizar Indicação</button></div>
+        <button class="w-100 btn btn-sm btn-success bottom-center " data-toggle="button" style="">Finalizar Indicação</button></div>
       
 
       <div class="box border rounded-2 col border-0" style="
@@ -55,8 +55,8 @@
               <input type="checkbox" aria-label="">
             </div>
           </div>
-          <input type="text" class="form-control" >
-          <input type="text" class="form-control" >
+          <input type="text" class="form-control bg-adm ">
+          <input type="text" class="form-control bg-adm " >
         </div>
 
           <button class=" w-100 btn btn-sm btn-success bottom-center" data-toggle="button">Finalizar Votação</button></div
