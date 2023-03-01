@@ -8,6 +8,10 @@
   background-color: rgb(134, 134, 136);
 }
 
+.bg-fundo{
+  background-color: rgb(136, 134, 134);;
+}
+
 ::-webkit-scrollbar {
   width: 0px;               /* width of the entire scrollbar */
 }
