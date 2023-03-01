@@ -3,7 +3,7 @@
 {% block content %}
   {% if request.user.is_superuser %}
     <div class="row mt-3">
-      <div class="container col border rounded text-center border-0 align-middle" style="
+      <div class="container col border rounded text-center border-0 align-middle " style="
             background-color: rgb(134, 134, 136);
             margin-right: 5px;
             height: 70vh;
@@ -20,7 +20,7 @@
         </div>
       </div>
 
-      <div class="box border rounded-2 col border-0" style="
+      <div class="flex-row box border rounded-2 col border-0" style="
             height: 70vh;
             margin-right: 5px;
             background-color: rgb(136, 134, 134);
@@ -28,8 +28,22 @@
         <h4 class="text-center">Cargo</h4>
         <p class="text-center">Nomes indicados</p>
 
-        <button class="w-100 btn btn-sm btn-success bottom-center" data-toggle="button">Finalizar Indicação</button>
-      </div>
+        <div class="row" style="width: 120px; margin-left: 33%; margin-right: 30%;">
+        <div><input type="checkbox" name="name">  Erick</input></div>
+        <div><input type="checkbox" name="name">  Stefany</input></div>
+        <div><input type="checkbox" name="name">  Ademir</input></div>
+        <div><input type="checkbox" name="name">  Lucimara</input></div>
+        <div><input type="checkbox" name="name">  Mercia</input></div>
+        <div><input type="checkbox" name="name">  Eduardo</input></div>
+        <div><input type="checkbox" name="name">  Gisele</input></div>
+        <div><input type="checkbox" name="name">  Sandro</input></div>
+        <div><input type="checkbox" name="name">  Cleusa</input></div>
+        <div><input type="checkbox" name="name">  Samuel</input></div>
+        <div><input type="checkbox" name="name">  Rafael</input></div>
+        </div>
+      
+        <button class="w-100 btn btn-sm btn-success bottom-center" data-toggle="button" style="">Finalizar Indicação</button></div>
+      
 
       <div class="box border rounded-2 col border-0" style="
             height: 70vh;
@@ -37,6 +51,26 @@
             background-color: rgb(136, 134, 134);
           ">
         <h4 class="text-center">Votação</h4>
+        <p class="text-center">Nomes</p>
+
+        <div class="row" style="width: 150px; margin-left: 30%;">
+          <div class="d-inline-flex justify-content-between "><input type="checkbox" name="name">  Stefany</input><input class="" style="width: 25px;margin:auto;" type="text"> </div>
+          <div class="d-inline-flex justify-content-between "><input type="checkbox" name="name">  Erick</input><input class="" style="width: 25px;margin:auto;" type="text"> </div>
+          <div class="d-inline-flex justify-content-between "><input type="checkbox" name="name">  Ademir</input><input class="" style="width: 25px;margin:auto;" type="text"> </div>
+          <div class="d-inline-flex justify-content-between "><input type="checkbox" name="name">  Lucimara</input><input class="" style="width: 25px;margin:auto;" type="text"> </div>
+          <div class="d-inline-flex justify-content-between "><input type="checkbox" name="name">  Mercia</input><input class="" style="width: 25px;margin:auto;" type="text"> </div>
+          <div class="d-inline-flex justify-content-between "><input type="checkbox" name="name">  Eduardo</input><input class="" style="width: 25px;margin:auto;" type="text"> </div>
+          <div class="d-inline-flex justify-content-between "><input type="checkbox" name="name">  Gisele</input><input class="" style="width: 25px;margin:auto;" type="text"> </div>
+          <div class="d-inline-flex justify-content-between "><input type="checkbox" name="name">  Sandro</input><input class="" style="width: 25px;margin:auto;" type="text"> </div>
+          <div class="d-inline-flex justify-content-between "><input type="checkbox" name="name">  Cleusa</input><input class="" style="width: 25px;margin:auto;" type="text"> </div>
+          <div class="d-inline-flex justify-content-between "><input type="checkbox" name="name">  Raissa</input><input class="" style="width: 25px;margin:auto;" type="text"> </div>
+          <div class="d-inline-flex justify-content-between "><input type="checkbox" name="name">  Samuel</input><input class="" style="width: 25px;margin:auto;" type="text"> </div>
+          <div class="d-inline-flex justify-content-between "><input type="checkbox" name="name">  Rafael</input><input class="" style="width: 25px;margin:auto;" type="text"> </div>
+          
+          </div>
+
+          <button class=" w-100 btn btn-sm btn-success bottom-center" data-toggle="button">Finalizar Votação</button></div
+
       </div>
       <div class="box border rounded-2 col border-0 mb-0" style="height: 70vh; background-color: rgb(136, 134, 134)">
         <h4 class="text-center">Resultado</h4>
