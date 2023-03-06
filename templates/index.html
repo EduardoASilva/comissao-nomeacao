@@ -3,72 +3,89 @@
 {% block content %}
   {% if request.user.is_superuser %}
     <div class="row mt-3">
-      <div class="container col border rounded text-center border-0 align-middle " style="
+
+      <!-- Inicio div Lista de cargos -->
+      <div class="container col border rounded text-center border-0 align-middle" style="
             background-color: rgb(134, 134, 136);
             margin-right: 5px;
             height: 70vh;
             overflow-y: auto;
             justify-content: center;
           ">
-        <div class="d-flex bg-adm">
-          <h4 class="m-auto">Lista de cargos</h4>
+        <div class="bg-adm sticky-top">
+          <h4 class="text-center">Lista de cargos</h4>
         </div>
         <div class="" style="margin-top: 50px">
-          {% for cargo in cargos %}
-            <button id="botton" class="btn btn-primary btn-sm mb-1 col-12 " style="background-color: darkslategrey">{{ cargo.name }}</button>
+          {% for cargo in cargos %}         
+            <button id="botton" class="btn btn-primary btn-sm mb-1 col-12" style="background-color: darkslategrey">{{ cargo.name }}</button>
           {% endfor %}
         </div>
       </div>
+      <!-- Fim div Lista de cargos -->
 
+      <!-- inicio div Cargos -->
       <div class="flex-row box border rounded-2 col border-0 bg-adm" style="
             height: 70vh;
             margin-right: 5px;
             
           ">
+          <div>
         <h4 class="text-center">Cargo</h4>
         <p class="text-center">Nomes indicados</p>
+      </div>
 
-        <div class="input-group input-group-sm mb-3">
+      <div class="m-auto mb-1" style="height: 74%;">
+        <div class="input-group input-group-md mb-1">
           <div class="input-group-prepend">
-            <div class="input-group-text h-100 bg-adm border-0" id="inputGroup-sizing-sm">
-              <input type="checkbox" aria-label="">
+            <div class="input-group-text h-100 rounded-0" id="inputGroup-sizing-sm">
+              <input type="checkbox" aria-label="" />
             </div>
           </div>
-          <input type="text" class="form-control" >
+          <input type="text" class="form-control rounded-0 text-center" value="Disabled readonly input" disabled readonly/>
         </div>
-        
-      
-        <button class="w-100 btn btn-sm btn-success bottom-center " data-toggle="button" style="">Finalizar Indicação</button></div>
-      
+      </div>
 
+        <button class="w-100 btn btn-sm btn-success bottom-center" data-toggle="button" style="">Finalizar Indicação</button>
+      </div>
+      <!-- Fim div Cargos -->
+
+      <!-- inicio div Votação -->
       <div class="box border rounded-2 col border-0" style="
             height: 70vh;
             margin-right: 5px;
             background-color: rgb(136, 134, 134);
           ">
-        <h4 class="text-center">Votação</h4>
-        <p class="text-center">Nomes</p>
-
-        <div class="input-group input-group-sm mb-3">
-          <div class="input-group-prepend">
-            <div class="input-group-text h-100 bg-adm border-0" id="inputGroup-sizing-sm">
-              <input type="checkbox" aria-label="">
+        <div>
+          <h4 class="text-center">Votação</h4>
+          <p class="text-center">Nomes</p>
+        </div>
+        <div class="m-auto mb-1" style="height: 74%;">
+          <div class="input-group input-group-md mb-1">
+            <div class="input-group-prepend">
+              <span class="input-group-text h-100 rounded-0"><input type="checkbox" aria-label="Checkbox for following text input" /></span>
+            </div>
+            <input type="text" class="form-control text-center" aria-label="Amount (to the nearest dollar)" value="Disabled readonly input" disabled readonly />
+            <div class="input-group-append">
+              <span class="input-group-text rounded-0">0</span>
             </div>
           </div>
-          <input type="text" class="form-control bg-adm ">
-          <input type="text" class="form-control bg-adm " >
+
         </div>
 
-          <button class=" w-100 btn btn-sm btn-success bottom-center" data-toggle="button">Finalizar Votação</button></div
-
+        <div class="">
+          <button class="mb-1 w-100 btn btn-sm btn-success bottom-center" data-toggle="button">Finalizar Votação</button>
+        </div>
       </div>
+      <!-- fim div Votação -->
+
+      <!-- inicio div Resultado -->
       <div class="box border rounded-2 col border-0 mb-0" style="height: 70vh; background-color: rgb(136, 134, 134)">
         <h4 class="text-center">Resultado</h4>
       </div>
     </div>
   {% else %}
     <div class="row mt-3" style="height: 70vh;">
-      <div class="box bg-light border rounded-2 col">
+      <div class="box bg-adm border-0 rounded-2 col">
         <h4 class="text-center">Cargo</h4>
         <p class="text-center">Nomes indicados</p>
         <div class="row justify-content-center">
@@ -77,7 +94,7 @@
         </div>
       </div>
 
-      <div class="box bg-light border rounded-2 col" style="margin-left: 5px">
+      <div class="box bg-adm border-0 rounded-2 col" style="margin-left: 5px">
         <h4 class="text-center">Resultado</h4>
       </div>
     </div>
