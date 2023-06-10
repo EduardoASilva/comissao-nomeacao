@@ -2,61 +2,138 @@
 
 {% block content %}
   {% if request.user.is_superuser %}
-    <div class="row mt-3">
+ 
+  <div class="container m-auto d-lg-flex gap-3 mt-3 " >
       <!-- Inicio div Lista de cargos -->
-      <div class="container col border rounded text-center border-0 align-middle" style="
-            background-color: rgb(134, 134, 136);
-            margin-right: 5px;
-            height: 70vh;
-            overflow-y: auto;
-            justify-content: center;
-          ">
-        <div class="bg-adm sticky-top">
+      <div class="col content1 justify-content-center border rounded text-center border-0 align-middle" style="background-color: rgb(134, 134, 136);
+      height: 71vh;">
+        <div class=" bg-adm" style="height: 15%;">
           <h4 class="text-center mt-2">Lista de cargos</h4>
         </div>
-        <div class="" style="margin-top: 50px">
+        <div class="" style="height: 80%; overflow-y: scroll; padding: 0 10px 0 10px;">
           {% for cargo in cargos %}
-            <button id="botton" class="btn btn-primary btn-sm mb-1 col-12" style="background-color: darkslategrey">{{ cargo.name }}</button>
+            <button id="botton" class="btn btn-primary btn-sm mb-1 col-12">{{ cargo.name }}</button>
           {% endfor %}
         </div>
       </div>
       <!-- Fim div Lista de cargos -->
 
       <!-- inicio div Cargos -->
-      <div class="flex-row box border rounded-2 col border-0 bg-adm" style="
-            height: 70vh;
-            margin-right: 5px;
-            
-          ">
-        <div>
+    <div class="col flex-collumn content justify-content-center box border rounded-2 border-0 bg-adm" style="background-color: rgb(134, 134, 136);
+    height: 71vh;">
+        <div class="" style="height: 15%;">
           <h4 class="text-center mt-2">Cargo</h4>
           <p class="text-center">Nomes indicados</p>
         </div>
 
-        <div class="m-auto mb-1" style="height: 72%;">
-          <div class="input-group input-group-sm mb-1">
-            <div class="input-group-text">
-              <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input" />
+        <div class="cargos m-auto mb-1 " style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px;" >
+          <div class="">
+            <div class="input-group input-group-sm mb-1">
+
+              <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
+              </div>
+              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
             </div>
-            <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
+
+            <div class="input-group input-group-sm mb-1">
+
+              <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
+              </div>
+              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
+            </div>
+
+            <div class="input-group input-group-sm mb-1">
+
+              <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
+              </div>
+              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
+            </div>
+
+            <div class="input-group input-group-sm mb-1">
+
+              <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
+              </div>
+              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
+            </div>
+
+            <div class="input-group input-group-sm mb-1">
+
+              <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
+              </div>
+              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
+            </div>
+
+            <div class="input-group input-group-sm mb-1">
+
+              <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
+              </div>
+              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
+            </div>
+
+            <div class="input-group input-group-sm mb-1">
+
+              <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
+              </div>
+              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
+            </div>
+
+            <div class="input-group input-group-sm mb-1">
+
+              <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
+              </div>
+              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
+            </div>
+
+            <div class="input-group input-group-sm mb-1">
+
+              <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
+              </div>
+              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
+            </div>
+
+            <div class="input-group input-group-sm mb-1">
+
+              <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
+              </div>
+              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
+            </div>
+
+            <div class="input-group input-group-sm mb-1">
+
+              <div class="input-group-text">
+                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
+              </div>
+              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
+            </div>
+  
           </div>
         </div>
 
-        <button class="w-100 btn btn-sm btn-success bottom-center" data-toggle="button" style="">Finalizar Indicação</button>
-      </div>
+        
+          <div style="height: 5%; margin: 0 10px 0 10px;">
+          <button class="w-100 btn btn-sm btn-success bottom-center " data-toggle="button">Finalizar Indicação</button>
+          </div>
+    </div>     
       <!-- Fim div Cargos -->
 
       <!-- inicio div Votação -->
-      <div class="box border rounded-2 col border-0" style="
-            height: 70vh;
-            margin-right: 5px;
-            background-color: rgb(136, 134, 134);
-          ">
-        <div>
+      <div class="col content justify-content-center box border rounded-2  border-0" style="background-color: rgb(134, 134, 136);
+      height: 71vh;" >
+        <div style="height: 15%;">
           <h4 class="text-center mt-2">Votação</h4>
           <p class="text-center">Nomes</p>
         </div>
-        <div class="m-auto mb-1" style="height: 72%;">
+        <div class="m-auto mb-1" style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px; ">
           <div class="input-group input-group-sm mb-1">
             <span class="input-group-text"><input type="checkbox" name="" id="" /></span>
             <input type="text" class="form-control text-center" aria-label="Amount (to the nearest dollar)"  value="Disabled readonly input" disabled readonly />
@@ -64,27 +141,43 @@
           </div>
         </div>
 
-        <div class="">
-          <button class="mb-1 w-100 btn btn-sm btn-success bottom-center" data-toggle="button">Finalizar Votação</button>
+        <div class="" style="height: 5%; margin: 0 10px 0 10px;">
+          <button class="mb-2 w-100 btn btn-sm btn-success bottom-center" data-toggle="button">Finalizar Votação</button>
         </div>
       </div>
       <!-- fim div Votação -->
 
       <!-- inicio div Resultado -->
-      <div class="box border rounded-2 col border-0 mb-0" style="height: 70vh; background-color: rgb(136, 134, 134)">
+      <div class="col content justify-content-center box border rounded-2 border-0 mb-0" style="background-color: rgb(134, 134, 136);
+      height: 71vh;">
+        <div style="height: 15%;">
         <h4 class="text-center mt-2">Resultado</h4>
+       </div>
+        <div style="height: 80%; margin: 0 10px 0 10px;">
+
+        </div>
+
       </div>
-    </div>
-    <!-- Fim div Resultado -->
+      <!-- Fim div Resultado -->
+  </div> 
   {% else %}
-    <div class="row mt-3" style="height: 70vh;">
+    <div class="row justify-content-center mt-3" style="height: 70vh;">
       <div class="box bg-adm border-0 rounded-2 col">
         <h4 class="text-center mt-2">Cargo</h4>
         <p class="text-center">Nomes indicados</p>
-        <div class="row justify-content-center">
-          <input class="col-auto border-rounded-2" type="text" style="margin-left: 5px; width: 50%" />
-          <button class="btn btn-success col-auto" data-toggle="button" style="margin-left: 5px; margin-right: 5px">Indicar</button>
+
+        <div style="height: 71%;"></div>
+
+        <div class="input-group">
+          <select class="form-select text-center" id="inputGroupSelect04" aria-label="Example select with button addon">
+            <option selected>Choose...</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <button class="btn btn-success" type="button">Indicar</button>
         </div>
+
       </div>
 
       <div class="box bg-adm border-0 rounded-2 col" style="margin-left: 5px">
