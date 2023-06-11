@@ -1,316 +1,369 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  {% if request.user.is_superuser %}
- 
-  <div class="container m-auto d-lg-flex gap-3 mt-2" style="height: 73vh; align-items: center;" >
-      <!-- Inicio div Lista de cargos -->
-      <div class="col content1 justify-content-center border rounded text-center border-0 align-middle" style="background-color: rgb(134, 134, 136);
-      height: 71vh;">
-        <div class=" bg-adm" style="height: 15%;">
-          <h4 class="text-center mt-2">Lista de cargos</h4>
-        </div>
-        <div class="" style="height: 80%; overflow-y: scroll; padding: 0 10px 0 10px;">
-          {% for cargo in cargos %}
-            <button id="botton" class="btn btn-primary btn-sm mb-1 col-12">{{ cargo.name }}</button>
-          {% endfor %}
-        </div>
-      </div>
-      <!-- Fim div Lista de cargos -->
+    {% if request.user.is_superuser %}
 
-      <!-- inicio div Cargos -->
-    <div class="col flex-collumn content justify-content-center box border rounded-2 border-0 bg-adm" style="background-color: rgb(134, 134, 136);
+        <div class="container m-auto d-lg-flex gap-3 mt-2" style="height: 73vh; align-items: center;">
+            <!-- Inicio div Lista de cargos -->
+            <div class="col content1 justify-content-center border rounded text-center border-0 align-middle" style="background-color: rgb(134, 134, 136);
+      height: 71vh;">
+                <div class=" bg-adm" style="height: 15%;">
+                    <h4 class="text-center mt-2">Lista de cargos</h4>
+                </div>
+                <div class="" style="height: 80%; overflow-y: scroll; padding: 0 10px 0 10px;">
+                    {% for cargo in cargos %}
+                        <button id="botton" class="btn btn-primary btn-sm mb-1 col-12">{{ cargo.name }}</button>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- Fim div Lista de cargos -->
+
+            <!-- inicio div Cargos -->
+            <div class="col flex-collumn content justify-content-center box border rounded-2 border-0 bg-adm" style="background-color: rgb(134, 134, 136);
     height: 71vh;">
-        <div class="" style="height: 15%;">
-          <h4 class="text-center mt-2">Cargo</h4>
-          <p class="text-center">Nomes indicados</p>
-        </div>
+                <div class="" style="height: 15%;">
+                    <h4 class="text-center mt-2">Cargo</h4>
+                    <p class="text-center">Nomes indicados</p>
+                </div>
 
-        <div class="cargos m-auto mb-1 " style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px;" >
-          <div class="">
-            <div class="input-group input-group-sm mb-1">
+                <div class="cargos m-auto mb-1 " style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px;">
+                    <div class="">
+                        <div class="input-group input-group-sm mb-1">
 
-              <div class="input-group-text">
-                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-              </div>
-              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div style="height: 5%; margin: 0 10px 0 10px;">
+                    <button class="w-100 btn btn-sm btn-success bottom-center " data-toggle="button">Finalizar
+                        Indicação
+                    </button>
+                </div>
             </div>
+            <!-- Fim div Cargos -->
 
-            <div class="input-group input-group-sm mb-1">
-
-              <div class="input-group-text">
-                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-              </div>
-              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-            </div>
-
-            <div class="input-group input-group-sm mb-1">
-
-              <div class="input-group-text">
-                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-              </div>
-              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-            </div>
-
-            <div class="input-group input-group-sm mb-1">
-
-              <div class="input-group-text">
-                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-              </div>
-              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-            </div>
-
-            <div class="input-group input-group-sm mb-1">
-
-              <div class="input-group-text">
-                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-              </div>
-              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-            </div>
-
-            <div class="input-group input-group-sm mb-1">
-
-              <div class="input-group-text">
-                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-              </div>
-              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-            </div>
-
-            <div class="input-group input-group-sm mb-1">
-
-              <div class="input-group-text">
-                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-              </div>
-              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-            </div>
-
-            <div class="input-group input-group-sm mb-1">
-
-              <div class="input-group-text">
-                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-              </div>
-              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-            </div>
-
-            <div class="input-group input-group-sm mb-1">
-
-              <div class="input-group-text">
-                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-              </div>
-              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-            </div>
-
-            <div class="input-group input-group-sm mb-1">
-
-              <div class="input-group-text">
-                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-              </div>
-              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-            </div>
-
-            <div class="input-group input-group-sm mb-1">
-
-              <div class="input-group-text">
-                <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-              </div>
-              <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-            </div>
-  
-          </div>
-        </div>
-
-        
-          <div style="height: 5%; margin: 0 10px 0 10px;">
-          <button class="w-100 btn btn-sm btn-success bottom-center " data-toggle="button">Finalizar Indicação</button>
-          </div>
-    </div>     
-      <!-- Fim div Cargos -->
-
-      <!-- inicio div Votação -->
-      <div class="col content justify-content-center box border rounded-2  border-0" style="background-color: rgb(134, 134, 136);
-      height: 71vh;" >
-        <div style="height: 15%;">
-          <h4 class="text-center mt-2">Votação</h4>
-          <p class="text-center">Nomes</p>
-        </div>
-        <div class="m-auto mb-1" style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px; ">
-          <div class="input-group input-group-sm mb-1">
-            <span class="input-group-text"><input type="checkbox" name="" id="" /></span>
-            <input type="text" class="form-control text-center" aria-label="Amount (to the nearest dollar)"  value="Disabled readonly input" disabled readonly />
-            <span class="input-group-text">0</span>
-          </div>
-        </div>
-
-        <div class="" style="height: 5%; margin: 0 10px 0 10px;">
-          <button class="mb-2 w-100 btn btn-sm btn-success bottom-center" data-toggle="button">Finalizar Votação</button>
-        </div>
-      </div>
-      <!-- fim div Votação -->
-
-      <!-- inicio div Resultado -->
-      <div class="col content justify-content-center box border rounded-2 border-0 mb-0" style="background-color: rgb(134, 134, 136);
+            <!-- inicio div Votação -->
+            <div class="col content justify-content-center box border rounded-2  border-0" style="background-color: rgb(134, 134, 136);
       height: 71vh;">
-        <div style="height: 15%;">
-        <h4 class="text-center mt-2">Resultado</h4>
-       </div>
-        <div style="height: 80%; margin: 0 10px 0 10px;">
+                <div style="height: 15%;">
+                    <h4 class="text-center mt-2">Votação</h4>
+                    <p class="text-center">Nomes</p>
+                </div>
+                <div class="m-auto mb-1" style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px; ">
+                    <div class="input-group input-group-sm mb-1">
+                        <span class="input-group-text"><input type="checkbox" name="" id=""/></span>
+                        <input type="text" class="form-control text-center" aria-label="Amount (to the nearest dollar)"
+                               value="Disabled readonly input" disabled readonly/>
+                        <span class="input-group-text">0</span>
+                    </div>
+                </div>
 
+                <div class="" style="height: 5%; margin: 0 10px 0 10px;">
+                    <button class="mb-2 w-100 btn btn-sm btn-success bottom-center" data-toggle="button">Finalizar
+                        Votação
+                    </button>
+                </div>
+            </div>
+            <!-- fim div Votação -->
+
+            <!-- inicio div Resultado -->
+            <div class="col content justify-content-center box border rounded-2 border-0 mb-0" style="background-color: rgb(134, 134, 136);
+      height: 71vh;">
+                <div style="height: 15%;">
+                    <h4 class="text-center mt-2">Resultado</h4>
+                </div>
+                <div style="height: 80%; margin: 0 10px 0 10px;">
+
+                </div>
+
+            </div>
+            <!-- Fim div Resultado -->
         </div>
+    {% else %}
 
-      </div>
-      <!-- Fim div Resultado -->
-  </div> 
-  {% else %}
+        <div class="container m-auto d-lg-flex gap-3 mt-2" style="height: 73vh; align-items: center;">
+            <!-- Inicio div Lista de membros -->
+            <div class="col content justify-content-center box border rounded-2  border-0" style="background-color: rgb(134, 134, 136);
+    height: 71vh;">
+                <div style="height: 15%;">
+                    <h4 class="text-center mt-2">Lista de membros</h4>
+                    <p class="text-center">Nomes</p>
+                </div>
+                <div class="m-auto mb-1" style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px; ">
+                    <div class="input-group input-group-sm mb-1">
 
-<div class="container m-auto d-lg-flex gap-3 mt-2" style="height: 73vh; align-items: center;" >
-    <!-- Inicio div Lista de membros -->
-    <div class="col content justify-content-center box border rounded-2  border-0" style="background-color: rgb(134, 134, 136);
-    height: 71vh;" >
-      <div style="height: 15%;">
-        <h4 class="text-center mt-2">Lista de membros</h4>
-        <p class="text-center">Nomes</p>
-      </div>
-      <div class="m-auto mb-1" style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px; ">
-        <div class="input-group input-group-sm mb-1">
+                        <div class="input-group-text">
+                            <input class="form-check-input mt-0" type="checkbox"
+                                   aria-label="Checkbox for following text input"/>
+                        </div>
+                        <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                               value="Membro-1" disabled readonly/>
+                    </div>
+                </div>
 
-          <div class="input-group-text">
-            <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-          </div>
-          <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Membro-1" disabled readonly />
-        </div>
-      </div>
+                <div class="" style="height: 5%; margin: 0 10px 0 10px;">
+                    <button class="mb-2 w-100 btn btn-sm btn-success bottom-center" data-toggle="button">Indicar
+                        membro
+                    </button>
+                </div>
+            </div>
+            <!-- Fim div Lista de membros -->
 
-      <div class="" style="height: 5%; margin: 0 10px 0 10px;">
-        <button class="mb-2 w-100 btn btn-sm btn-success bottom-center" data-toggle="button">Indicar membro</button>
-      </div>
-    </div>
-    <!-- Fim div Lista de membros -->
-
-    <!-- inicio div Cargo -->
-  <div class="col flex-collumn content justify-content-center box border rounded-2 border-0 bg-adm" style="background-color: rgb(134, 134, 136);
+            <!-- inicio div Cargo -->
+            <div class="col flex-collumn content justify-content-center box border rounded-2 border-0 bg-adm" style="background-color: rgb(134, 134, 136);
   height: 71vh;">
-      <div class="" style="height: 15%;">
-        <h4 class="text-center mt-2">Cargo</h4>
-        <p class="text-center">Nomes indicados</p>
-      </div>
+                <div class="" style="height: 15%;">
+                    <h4 class="text-center mt-2">Cargo</h4>
+                    <p class="text-center">Nomes indicados</p>
+                </div>
 
-      <div class="cargos m-auto mb-1 " style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px;" >
-        <div class="">
-          <div class="input-group input-group-sm mb-1">
+                <div class="cargos m-auto mb-1 " style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px;">
+                    <div class="">
+                        <div class="input-group input-group-sm mb-1">
 
-            <div class="input-group-text">
-              <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <div class="input-group-text">
+                                <input class="form-check-input mt-0" type="checkbox"
+                                       aria-label="Checkbox for following text input"/>
+                            </div>
+                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
+                                   value="Disabled readonly input" disabled readonly/>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div style="height: 5%; margin: 0 10px 0 10px;">
+                    <button class="w-100 btn btn-sm btn-success bottom-center " data-toggle="button">Votar</button>
+                </div>
             </div>
-            <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-          </div>
+            <!-- Fim div Cargo -->
 
-          <div class="input-group input-group-sm mb-1">
-
-            <div class="input-group-text">
-              <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
+            <!-- inicio div Votação -->
+            <div class="col content justify-content-center box border rounded-2  border-0" style="background-color: rgb(134, 134, 136);
+    height: 71vh;">
+                <div style="height: 15%;">
+                    <h4 class="text-center mt-2">Votação</h4>
+                    <p class="text-center">Nomes</p>
+                </div>
+                <div class="m-auto mb-1" style="height: 80%; overflow-y: scroll; padding: 0 10px 0 10px; ">
+                    <div class="input-group input-group-sm mb-1">
+                        <span class="input-group-text"><input type="checkbox" name="" id=""/></span>
+                        <input type="text" class="form-control text-center" aria-label="Amount (to the nearest dollar)"
+                               value="Disabled readonly input" disabled readonly/>
+                        <span class="input-group-text">0</span>
+                    </div>
+                </div>
             </div>
-            <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-          </div>
-
-          <div class="input-group input-group-sm mb-1">
-
-            <div class="input-group-text">
-              <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-            </div>
-            <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-          </div>
-
-          <div class="input-group input-group-sm mb-1">
-
-            <div class="input-group-text">
-              <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-            </div>
-            <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-          </div>
-
-          <div class="input-group input-group-sm mb-1">
-
-            <div class="input-group-text">
-              <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-            </div>
-            <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-          </div>
-
-          <div class="input-group input-group-sm mb-1">
-
-            <div class="input-group-text">
-              <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-            </div>
-            <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-          </div>
-
-          <div class="input-group input-group-sm mb-1">
-
-            <div class="input-group-text">
-              <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-            </div>
-            <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-          </div>
-
-          <div class="input-group input-group-sm mb-1">
-
-            <div class="input-group-text">
-              <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-            </div>
-            <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-          </div>
-
-          <div class="input-group input-group-sm mb-1">
-
-            <div class="input-group-text">
-              <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-            </div>
-            <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-          </div>
-
-          <div class="input-group input-group-sm mb-1">
-
-            <div class="input-group-text">
-              <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-            </div>
-            <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-          </div>
-
-          <div class="input-group input-group-sm mb-1">
-
-            <div class="input-group-text">
-              <input class="form-check-input mt-0" type="checkbox" aria-label="Checkbox for following text input" />
-            </div>
-            <input type="text" class="form-control text-center" aria-label="Text input with checkbox" value="Disabled readonly input" disabled readonly />
-          </div>
-
+            <!-- fim div Votação -->
         </div>
-      </div>
 
-      
-        <div style="height: 5%; margin: 0 10px 0 10px;">
-        <button class="w-100 btn btn-sm btn-success bottom-center " data-toggle="button">Votar</button>
-        </div>
-  </div>     
-    <!-- Fim div Cargo -->
-
-    <!-- inicio div Votação -->
-    <div class="col content justify-content-center box border rounded-2  border-0" style="background-color: rgb(134, 134, 136);
-    height: 71vh;" >
-      <div style="height: 15%;">
-        <h4 class="text-center mt-2">Votação</h4>
-        <p class="text-center">Nomes</p>
-      </div>
-      <div class="m-auto mb-1" style="height: 80%; overflow-y: scroll; padding: 0 10px 0 10px; ">
-        <div class="input-group input-group-sm mb-1">
-          <span class="input-group-text"><input type="checkbox" name="" id="" /></span>
-          <input type="text" class="form-control text-center" aria-label="Amount (to the nearest dollar)"  value="Disabled readonly input" disabled readonly />
-          <span class="input-group-text">0</span>
-        </div>
-      </div>
-    </div>
-    <!-- fim div Votação -->
-</div> 
-    
-  {% endif %}
+    {% endif %}
 {% endblock %}

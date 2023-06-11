@@ -4,7 +4,8 @@ from comissao.views import users
 
 urlpatterns = [
     path('login/', users.login, name='login'),
-    # path('logout/', users.logout, name='logout'),
+    path('login_user/', users.login_user, name='login_user'),
+    path('logout/', users.logout, name='logout'),
     # path('find_users', users.find_users, name='find_users'),
     # path('add_user', users.add_user, name='add_user'),
     # path('usuario/view/<int:user_id>', users.view_user, name='view_user'),
