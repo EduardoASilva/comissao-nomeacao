@@ -21,7 +21,7 @@
             src="{% static 'img/IASD-2.png' %}"
             alt=""
     />
-    <a href="{% url 'logout' %}" class="btn btn-dark">Sair</a>
+    <button disabled class="logout btn-dark"><a href="{% url 'logout' %}" class="btn btn-dark">Sair</a></button>
 </nav>
 <div class="container" style="padding: 0">
     {% block content %}
