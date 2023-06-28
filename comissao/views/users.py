@@ -39,3 +39,5 @@ def login_user(request):
 def logout(request):
     auth.logout(request)
     return redirect('index')
+
+
