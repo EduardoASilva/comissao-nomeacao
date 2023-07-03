@@ -27,116 +27,16 @@
                 </div>
 
                 <div class="cargos m-auto mb-1 " style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px;">
-                    <div class="">
-                        <div class="input-group input-group-sm mb-1">
+                    <div>
+                        {% for membro in membros %}
+                            <div class="input-group input-group-sm mb-1">
 
-                            <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox"
-                                       aria-label="Checkbox for following text input"/>
+                                <div class="input-group-text w-100">
+                                    <input class="form-check-input mt-0" type="checkbox" value="" id="checkbox{{ membro.id }}">
+                                    <label class="form-check-label ms-2" for="checkbox{{ membro.id }}">{{ membro.nome }}</label>
+                                </div>
                             </div>
-                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
-                                   value="Disabled readonly input" disabled readonly/>
-                        </div>
-
-                        <div class="input-group input-group-sm mb-1">
-
-                            <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox"
-                                       aria-label="Checkbox for following text input"/>
-                            </div>
-                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
-                                   value="Disabled readonly input" disabled readonly/>
-                        </div>
-
-                        <div class="input-group input-group-sm mb-1">
-
-                            <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox"
-                                       aria-label="Checkbox for following text input"/>
-                            </div>
-                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
-                                   value="Disabled readonly input" disabled readonly/>
-                        </div>
-
-                        <div class="input-group input-group-sm mb-1">
-
-                            <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox"
-                                       aria-label="Checkbox for following text input"/>
-                            </div>
-                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
-                                   value="Disabled readonly input" disabled readonly/>
-                        </div>
-
-                        <div class="input-group input-group-sm mb-1">
-
-                            <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox"
-                                       aria-label="Checkbox for following text input"/>
-                            </div>
-                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
-                                   value="Disabled readonly input" disabled readonly/>
-                        </div>
-
-                        <div class="input-group input-group-sm mb-1">
-
-                            <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox"
-                                       aria-label="Checkbox for following text input"/>
-                            </div>
-                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
-                                   value="Disabled readonly input" disabled readonly/>
-                        </div>
-
-                        <div class="input-group input-group-sm mb-1">
-
-                            <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox"
-                                       aria-label="Checkbox for following text input"/>
-                            </div>
-                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
-                                   value="Disabled readonly input" disabled readonly/>
-                        </div>
-
-                        <div class="input-group input-group-sm mb-1">
-
-                            <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox"
-                                       aria-label="Checkbox for following text input"/>
-                            </div>
-                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
-                                   value="Disabled readonly input" disabled readonly/>
-                        </div>
-
-                        <div class="input-group input-group-sm mb-1">
-
-                            <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox"
-                                       aria-label="Checkbox for following text input"/>
-                            </div>
-                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
-                                   value="Disabled readonly input" disabled readonly/>
-                        </div>
-
-                        <div class="input-group input-group-sm mb-1">
-
-                            <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox"
-                                       aria-label="Checkbox for following text input"/>
-                            </div>
-                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
-                                   value="Disabled readonly input" disabled readonly/>
-                        </div>
-
-                        <div class="input-group input-group-sm mb-1">
-
-                            <div class="input-group-text">
-                                <input class="form-check-input mt-0" type="checkbox"
-                                       aria-label="Checkbox for following text input"/>
-                            </div>
-                            <input type="text" class="form-control text-center" aria-label="Text input with checkbox"
-                                   value="Disabled readonly input" disabled readonly/>
-                        </div>
+                        {% endfor %}
 
                     </div>
                 </div>
