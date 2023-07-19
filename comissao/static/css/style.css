@@ -1,5 +1,4 @@
 
-
 .bg-adm{
   background-color: rgb(134, 134, 136);
 }
@@ -21,15 +20,14 @@
   background-color: transparent;
 }
 
-
 #login{
   width: 50px;
 }
-
-
 
 .cargos{
   overflow-y: scroll;
 }
 
-
+ input label{
+  text-align: center;
+}
