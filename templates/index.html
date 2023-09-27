@@ -19,7 +19,7 @@
                             <div class="membros input-group-text bg-dark"
                                  style="width: 100%; border: none; color: white;">
                                 <input class="form-check-input mt-0 listCargos" type="checkbox" value="{{ cargo.nome }}"
-                                       id="checkbox{{ cargo.id }}">
+                                       id="checkbox{{ cargo.id }}" onchange="checkbox(this)">
                                 <label class="form-check-label ms-2 w-100"
                                        for="checkbox{{ cargo.id }}">{{ cargo.nome }}</label>
                             </div>
