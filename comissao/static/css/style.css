@@ -1,4 +1,9 @@
 
+body{
+  width: 100vw;
+  height: 100vh;
+}
+
 .bg-adm{
   background-color: rgb(134, 134, 136);
 }
@@ -30,4 +35,8 @@
 
  input label{
   text-align: center;
+}
+
+.loading{
+  
 }

@@ -16,4 +16,4 @@ def index(request):
         }
         return render(request, 'index.html', context)
     else:
-        pass
+        return render(request, 'index.html')

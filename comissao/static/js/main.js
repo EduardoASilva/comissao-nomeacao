@@ -97,9 +97,37 @@ function checkbox(el){
         }
     }
 
-    // if (el.checked){
-    //     alert('check')
-    // }else{
-    //     alert('no check')
-    // }
+    let cargo = 'Cargo';
+    let nome_cargo = $('#nome_cargo')[0];
+    if (nome_cargo.innerText !== cargo){
+        nome_cargo.innerText = cargo
+        // $('.listCargos').each(function (index, value){
+        //     if ($(value).is(':checked')){
+        //         check = true
+        //         nome = value.value
+        //     }
+        // })
+        // if (check){
+        //     $('#nome_cargo').text(nome)
+        // }
+    }
 }
+
+const btn = document.getElementById('confirmar_cargo');
+    btn.addEventListener("click" ,function(e) {
+        e.preventDefault();
+        let check = false;
+        let nome = ''
+        $('.listCargos').each(function (index, value){
+            if ($(value).is(':checked')){
+                check = true
+                nome = value.value
+            }
+        })
+        if (check){
+            $('#nome_cargo').text(nome)
+        }else{
+            alertWarning('Selecione pelo menos um cargo!')
+        }
+
+    })
