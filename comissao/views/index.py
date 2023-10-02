@@ -17,3 +17,8 @@ def index(request):
         return render(request, 'index.html', context)
     else:
         return render(request, 'index.html')
+
+
+@login_required(login_url='login')
+def membros(request):
+    return render(request, 'membros.html')
