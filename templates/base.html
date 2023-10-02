@@ -13,27 +13,19 @@
 
 </head>
 <body class="body" style="background-color: rgba(0, 0, 0, 0.582)">
-<nav class="navbar-expand-lq navbar-dark bg-dark p-3 w-100 d-flex" style="height: 13vh; justify-content:center;">
-    <div class="vazia" style="width:33%"></div>
-    <div class="area-imagem d-flex" style="width:33%; justify-content: center;">
-        <img
-                class="navbar-brand rounded d-block mb-01 mt-01 w-10"
-                style=" width: 250px;"
-                src="{% static 'img/IASD-2.png' %}"
-                alt=""
-        />
-    </div>
-    <div class="area-botoes d-flex" style="width:33%; flex-direction: row-reverse; ">
-        <button class="logout btn-dark bg-dark border-0">
-            <a href="{% url 'logout' %}" class="btn btn-dark">Sair</a>
-        </button>
-        <button class="logout btn-dark bg-dark border-0">
-            <a href="{% url 'logout' %}" class="btn btn-dark">Sair</a>
-        </button>
-        <button class="logout btn-dark bg-dark border-0">
-            <a href="{% url 'logout' %}" class="btn btn-dark">Sair</a>
-        </button>
-    </div>
+<nav class="navbar-expand-lq navbar-dark bg-dark p-3 d-inline-flex w-100 justify-content-between " style="height: 13vh;">
+    <div></div>
+    <a href="/" class="">
+         <img class="navbar-brand rounded d-block mb-01 mt-01 w-10" style=" width: 250px;" src="{% static 'img/IASD-2.png' %}"
+            alt="Logo"/>
+    </a>
+
+    <button class="membros btn-dark">
+        <a href="{% url 'membros' %}" class="btn btn-dark">Membros</a>
+    </button>
+    <button class="logout btn-dark">
+        <a href="{% url 'logout' %}" class="btn btn-dark">Sair</a>
+    </button>
 </nav>
 <div class="container" style="padding: 0; width: 100vw; height: 74vh;">
     {% block content %}

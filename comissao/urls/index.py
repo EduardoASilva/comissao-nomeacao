@@ -4,4 +4,5 @@ from comissao.views import index
 
 urlpatterns = [
     path('', index.index, name='index'),
+    path('membros/', index.membros, name='membros'),
 ]
