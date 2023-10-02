@@ -15,12 +15,11 @@
 <body class="body" style="background-color: rgba(0, 0, 0, 0.582)">
 <nav class="navbar-expand-lq navbar-dark bg-dark p-3 d-inline-flex w-100 justify-content-between " style="height: 13vh;">
     <div></div>
-    <img
-            class="navbar-brand rounded d-block mb-01 mt-01 w-10"
-            style=" width: 250px;"
-            src="{% static 'img/IASD-2.png' %}"
-            alt=""
-    />
+    <a href="/" class="">
+         <img class="navbar-brand rounded d-block mb-01 mt-01 w-10" style=" width: 250px;" src="{% static 'img/IASD-2.png' %}"
+            alt="Logo"/>
+    </a>
+
     <button class="membros btn-dark">
         <a href="{% url 'membros' %}" class="btn btn-dark">Membros</a>
     </button>
