@@ -98,36 +98,18 @@ function checkbox(el){
     }
 
     let cargo = 'Cargo';
+    let cargoMembros = document.getElementById(`nomeCargo`);
     let nome_cargo = $('#nome_cargo')[0];
     if (nome_cargo.innerText !== cargo){
         nome_cargo.innerText = cargo
-        // $('.listCargos').each(function (index, value){
-        //     if ($(value).is(':checked')){
-        //         check = true
-        //         nome = value.value
-        //     }
-        // })
-        // if (check){
-        //     $('#nome_cargo').text(nome)
-        // }
+        cargoMembros.innerText = cargo
     }
 }
 
-const btn = document.getElementById('confirmar_cargo');
-    btn.addEventListener("click" ,function(e) {
-        e.preventDefault();
-        let check = false;
-        let nome = ''
-        $('.listCargos').each(function (index, value){
-            if ($(value).is(':checked')){
-                check = true
-                nome = value.value
-            }
-        })
-        if (check){
-            $('#nome_cargo').text(nome)
-        }else{
-            alertWarning('Selecione pelo menos um cargo!')
-        }
+function mudaStatus(){
+    console.log(document.getElementById(`nomeCargo`).innerText)
+}
 
-    })
+$(window).on(`load`, function (){
+    setInterval(mudaStatus, 2000);
+})

@@ -113,13 +113,11 @@
             <div class="col content justify-content-center box border rounded-2  border-0" style="background-color: rgb(134, 134, 136);
             height: 71vh;">
                 <div style="height: 15%;">
-                    <h4 class="text-center mt-2">Lista de membros</h4>
+                    <h4 id="nomeCargo" class="text-center mt-2">Lista de membros</h4>
                     <p class="text-center">Nomes</p>
                 </div>
                 <div class="m-auto mb-1" style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px; ">
-                    <div class="input-group input-group-sm mb-1 w-100">
-                        <p>Aguardando inicio da vota</p>
-                    </div>
+                    <h5 class="text-center mt-2">Aguardando inicio da votacao</h5>
                     {% for membro in membros %}
                         <div class="input-group input-group-sm mb-1 w-100">
 
@@ -147,3 +145,27 @@
 
     {% endif %}
 {% endblock %}
+
+{% block javascripts %}
+     {% if user.is_authenticated and user.is_staff %}
+        <script>
+            const btn = document.getElementById('confirmar_cargo');
+            btn.addEventListener("click" ,function(e) {
+                e.preventDefault();
+                let check = false;
+                let nome = ''
+                $('.listCargos').each(function (index, value){
+                    if ($(value).is(':checked')){
+                        check = true
+                        nome = value.value
+                    }
+                })
+                if (check){
+                    $('#nome_cargo').text(nome)
+                }else{
+                    alertWarning('Selecione pelo menos um cargo!')
+                }
+            })
+        </script>
+    {% endif %}
+{% endblock javascripts %}
