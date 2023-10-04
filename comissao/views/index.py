@@ -9,10 +9,10 @@ from comissao.models import ListaCargos, Membros
 def index(request):
     if request.user.is_staff:
         lista_cargos = ListaCargos.objects.all()
-        membros = Membros.objects.all()
+        membro = Membros.objects.all()
         context = {
             'cargos': lista_cargos,
-            'membros': membros
+            'membros': membro
         }
         return render(request, 'index.html', context)
     else:
@@ -21,4 +21,8 @@ def index(request):
 
 @login_required(login_url='login')
 def membros(request):
-    return render(request, 'membros.html')
+    membro = Membros.objects.all()
+    context = {
+        'membros': membro
+    }
+    return render(request, 'membros.html', context)
