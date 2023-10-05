@@ -1,8 +1,8 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 
-from comissao.models import ListaCargos, Membros
+from comissao.models import ListaCargos, Membros, Votacao, ListaIndicados
 
 
 @login_required(login_url='login')
@@ -16,7 +16,19 @@ def index(request):
         }
         return render(request, 'index.html', context)
     else:
-        return render(request, 'index.html')
+        vota_andamento = Votacao.objects.filter(finalizado=False)
+        if vota_andamento:
+            vota_andamento = vota_andamento.last()
+            if ListaIndicados.objects.filter(id_votacao=vota_andamento.id, id_membro_votou_id=request.user.id):
+                return render(request, 'index.html', {'votacao_em_andamento': True})
+            membro = Membros.objects.filter(ativo=True, apto=True)
+            context = {
+                'votacao': vota_andamento,
+                'membros': membro
+            }
+            return render(request, 'index.html', context)
+        else:
+            return render(request, 'index.html')
 
 
 @login_required(login_url='login')
@@ -29,5 +41,45 @@ def membros(request):
 
 
 def votacao(request):
-    id_cargo = request.GET.get('id_cargo')
-    pass
+    if request.GET.get('id_cargo'):
+        id_cargo = request.GET.get('id_cargo')
+
+        if not id_cargo:
+            return JsonResponse({'success': False, 'msg': 'Selecione um cargo válido'})
+
+        vota_andamento = Votacao.objects.filter(finalizado=False)
+        if vota_andamento:
+            vota_andamento = vota_andamento.last()
+
+            if vota_andamento.id_cargo_id == int(id_cargo):
+                return JsonResponse({
+                    'success': True,
+                    'msg': f'Continuar com a votação {vota_andamento.id_cargo.nome} em andamento'})
+            if vota_andamento:
+                return JsonResponse({
+                    'success': False,
+                    'msg': f'Já existe uma votação em andamento, por favor selecione {vota_andamento.id_cargo.nome} '})
+
+        vota = Votacao.objects.create()
+        vota.id_cargo_id = id_cargo
+        vota.save()
+        return JsonResponse({'success': True, 'msg': f'Votação do cargo {vota.id_cargo.nome} iniciada'})
+
+    elif request.GET.get('id_membro'):
+        id_membro = request.GET.get('id_membro')
+        id_votacao = request.GET.get('id_votacao')
+        vota = Votacao.objects.filter(id_cargo=id_votacao).last()
+        list_indicados = ListaIndicados.objects.filter(id_votacao=vota.id)
+        if list_indicados:
+            list_indicados = list_indicados.get()
+            list_indicados.id_membro_indicado = id_membro
+            list_indicados.id_membro_votou = request.user.id
+            list_indicados.save()
+        else:
+            ListaIndicados.objects.create(
+                id_votacao_id=vota.id,
+                id_membro_indicado_id=id_membro,
+                id_membro_votou_id=request.user.id
+            )
+        return redirect('index')
+

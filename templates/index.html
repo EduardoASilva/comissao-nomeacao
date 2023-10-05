@@ -112,36 +112,78 @@
             <!-- Inicio div Lista de membros -->
             <div class="col content justify-content-center box border rounded-2  border-0" style="background-color: rgb(134, 134, 136);
             height: 71vh;">
-                <div style="height: 15%;">
-                    <h4 id="nomeCargo" class="text-center mt-2">Lista de membros</h4>
-                    <p class="text-center">Nomes</p>
-                </div>
-                <div class="m-auto mb-1" style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px; ">
-                    <h5 class="text-center mt-2">Aguardando inicio da votacao</h5>
-                    {% for membro in membros %}
-                        <div class="input-group input-group-sm mb-1 w-100">
+                {% if votacao %}
 
-                            <div class="membros input-group-text bg-dark"
-                                 style="width: 100%; border: none; color: white;">
-                                <input class="form-check-input mt-0" type="checkbox" value=""
-                                       id="checkbox{{ membro.id }}">
-                                <label class="form-check-label ms-2 w-100"
-                                       for="checkbox{{ membro.id }}">{{ membro.nome|abbreviate_name }}</label>
+                    <div style="height: 15%;">
+                        <input type="hidden" id="id_votacao" value="{{ votacao.id_cargo_id }}">
+                        <h4 id="nomeCargo" class="text-center mt-2">{{ votacao.id_cargo.nome }}</h4>
+                        <p class="text-center">Nomes</p>
+                    </div>
+                    <div class="m-auto mb-1" style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px; ">
+                        {% for membro in membros %}
+                            <div class="input-group input-group-sm mb-1 w-100">
+
+                                <div class="membros input-group-text bg-dark"
+                                     style="width: 100%; border: none; color: white;">
+                                    <input class="form-check-input mt-0 listMembros" type="checkbox" value=""
+                                           id="checkbox{{ membro.id }}" onchange="checkboxMembros(this)">
+                                    <label class="form-check-label ms-2 w-100"
+                                           for="checkbox{{ membro.id }}">{{ membro.nome|abbreviate_name }}</label>
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
-                </div>
+                        {% endfor %}
+                    </div>
 
-                <div class="" style="height: 5%; margin: 0 10px 0 10px;">
-                    <button class="mb-2 w-100 btn btn-sm btn-success bottom-center" data-toggle="button">Indicar
-                        membro
-                    </button>
-                </div>
+                    <div class="" style="height: 5%; margin: 0 10px 0 10px;">
+                        <button class="mb-2 w-100 btn btn-sm btn-success bottom-center" onclick="indicarMembro()"
+                                data-toggle="button">
+                            Indicar Membro
+                        </button>
+                    </div>
+                {% else %}
+                    <h5 class="text-center mt-2">Aguardando inicio da votacao</h5>
+                {% endif %}
             </div>
             <!-- Fim div Lista de membros -->
         </div>
 
         <script>
+            function checkboxMembros(el){
+                let checkboxMembro = document.querySelectorAll(".listMembros");
+
+                if (el.checked){
+                    for (const check of checkboxMembro){
+                        if (!check.checked){
+                            check.disabled = true
+                        }
+                    }
+                }else{
+                    for (const check of checkboxMembro){
+                        check.disabled = false
+                    }
+                }
+            }
+
+            function indicarMembro(){
+                $('.listMembros').each(function (index, value) {
+                    if ($(value).is(':checked')) {
+                        let idMembro = value.id.replace('checkbox', '')
+                        let idVotacao = $('#id_votacao').val();
+                        $.get( location.href + 'votacao', { id_membro: idMembro, 'id_votacao': idVotacao })
+                            .done(function (data) {
+                                if (data.success) {
+                                    alertSuccess(data.msg)
+                                } else {
+                                    alertWarning(data.msg)
+                                }
+                            })
+                            .fail(function () {
+                                alertDanger("Erro na requisição");
+                            })
+                    }
+                })
+            }
+
             function mudaStatus() {
                 console.log(document.getElementById('nomeCargo').innerText)
             }
@@ -173,9 +215,9 @@
                             $.get( location.href + 'votacao', { id_cargo: idCargo })
                                 .done(function (data) {
                                     if (data.success) {
-                                        alertSuccess('Iniciado Votação')
+                                        alertSuccess(data.msg)
                                     } else {
-                                        alertWarning('Erro ao iniciar votação')
+                                        alertWarning(data.msg)
                                     }
                                 })
                                 .fail(function () {
