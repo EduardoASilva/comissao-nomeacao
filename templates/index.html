@@ -48,13 +48,13 @@
                         {% for membro in membros %}
                             <div class="input-group input-group-sm mb-1 w-100">
 
-{#                                <div class="membros input-group-text bg-dark"#}
-{#                                     style="width: 100%; border: none; color: white;">#}
-{#                                    <input class="form-check-input mt-0" type="checkbox" value=""#}
-{#                                           id="checkbox{{ membro.id }}">#}
-{#                                    <label class="form-check-label ms-2 w-100"#}
-{#                                           for="checkbox{{ membro.id }}">{{ membro.nome|abbreviate_name }}</label>#}
-{#                                </div>#}
+                                {#                                <div class="membros input-group-text bg-dark"#}
+                                {#                                     style="width: 100%; border: none; color: white;">#}
+                                {#                                    <input class="form-check-input mt-0" type="checkbox" value=""#}
+                                {#                                           id="checkbox{{ membro.id }}">#}
+                                {#                                    <label class="form-check-label ms-2 w-100"#}
+                                {#                                           for="checkbox{{ membro.id }}">{{ membro.nome|abbreviate_name }}</label>#}
+                                {#                                </div>#}
                             </div>
                         {% endfor %}
 
@@ -141,30 +141,57 @@
             <!-- Fim div Lista de membros -->
         </div>
 
-        <!--teste-->
+        <script>
+            function mudaStatus() {
+                console.log(document.getElementById('nomeCargo').innerText)
+            }
+
+            $(window).on(`load`, function () {
+                setInterval(mudaStatus, 2000);
+            })
+        </script>
 
     {% endif %}
 {% endblock %}
 
 {% block javascripts %}
-     {% if user.is_authenticated and user.is_staff %}
+    {% if user.is_authenticated and user.is_staff %}
         <script>
             const btn = document.getElementById('confirmar_cargo');
-            btn.addEventListener("click" ,function(e) {
+            btn.addEventListener("click", function (e) {
                 e.preventDefault();
                 let check = false;
                 let nome = ''
-                $('.listCargos').each(function (index, value){
-                    if ($(value).is(':checked')){
-                        check = true
-                        nome = value.value
+                if (btn.innerText === 'Iniciar Indicação') {
+                    $('.listCargos').each(function (index, value) {
+                        if ($(value).is(':checked')) {
+                            check = true
+                            nome = value.value
+                            $(value).prop('disabled', true);
+                            btn.innerText = 'Cancelar Indicação'
+                            let idCargo = value.id.replace('checkbox', '')
+                            $.get( location.href + 'votacao', { id_cargo: idCargo })
+                                .done(function (data) {
+                                    if (data.success) {
+                                        alertSuccess('Iniciado Votação')
+                                    } else {
+                                        alertWarning('Erro ao iniciar votação')
+                                    }
+                                })
+                                .fail(function () {
+                                    alertDanger("Erro na requisição");
+                                })
+                        }
+                    })
+                    if (check) {
+                        $('#nome_cargo').text(nome)
+                    } else {
+                        alertWarning('Selecione pelo menos um cargo!')
                     }
-                })
-                if (check){
-                    $('#nome_cargo').text(nome)
-                }else{
-                    alertWarning('Selecione pelo menos um cargo!')
+                } else {
+                    window.location.reload();
                 }
+
             })
         </script>
     {% endif %}

@@ -17,10 +17,16 @@ class ListaCargos(models.Model):
         return self.nome
 
 
-class MembroCargos(models.Model):
-    id_membro = models.ForeignKey(Membros, on_delete=models.NOT_PROVIDED, null=True)
-    id_cargo = models.ForeignKey(ListaCargos, on_delete=models.NOT_PROVIDED, null=True)
-
-
 class Votacao(models.Model):
-    
+    votado = models.ForeignKey(Membros, on_delete=models.SET_NULL, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+class ListaIndicados(models.Model):
+    id_votacao = models.ForeignKey(Votacao, on_delete=models.CASCADE)
+    id_membro = models.ForeignKey(Membros, on_delete=models.CASCADE)
+
+
+
+

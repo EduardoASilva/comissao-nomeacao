@@ -26,3 +26,8 @@ def membros(request):
         'membros': membro
     }
     return render(request, 'membros.html', context)
+
+
+def votacao(request):
+    id_cargo = request.GET.get('id_cargo')
+    pass
