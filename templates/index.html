@@ -28,7 +28,7 @@
                 </div>
                 <div style="height: 5%; margin: 0 10px 0 10px;">
                     <button id="confirmar_cargo" class="w-100 btn btn-sm btn-success bottom-center mt-1"
-                            data-toggle="button">
+                            data-toggle="button" value="">
                         Iniciar Indicação
                     </button>
                 </div>
@@ -115,7 +115,7 @@
                 {% if votacao %}
 
                     <div style="height: 15%;">
-                        <input type="hidden" id="id_votacao" value="{{ votacao.id_cargo_id }}">
+                        <input type="hidden" id="id_votacao" value="{{ votacao.id }}">
                         <h4 id="nomeCargo" class="text-center mt-2">{{ votacao.id_cargo.nome }}</h4>
                         <p class="text-center">Nomes</p>
                     </div>
@@ -140,8 +140,10 @@
                             Indicar Membro
                         </button>
                     </div>
+                {% elif votacao_em_andamento %}
+                    <h5 class="text-center mt-2">Aguardando inicio da votação</h5>
                 {% else %}
-                    <h5 class="text-center mt-2">Aguardando inicio da votacao</h5>
+                    <h5 class="text-center mt-2">Aguardando inicio da indicação</h5>
                 {% endif %}
             </div>
             <!-- Fim div Lista de membros -->
@@ -173,8 +175,10 @@
                             .done(function (data) {
                                 if (data.success) {
                                     alertSuccess(data.msg)
+                                    setInterval('location.reload()', 3000)
                                 } else {
                                     alertWarning(data.msg)
+                                    setInterval('location.reload()', 3000)
                                 }
                             })
                             .fail(function () {
@@ -199,6 +203,24 @@
 {% block javascripts %}
     {% if user.is_authenticated and user.is_staff %}
         <script>
+            function verificaIndicados() {
+
+            }
+
+            $(window).on(`load`, function () {
+                let vota = '{{ vota }}';
+                let idVotacao = '{{ id_votacao }}'
+                    if (vota) {
+                        $('.listCargos').each(function (index, value) {
+                            if ($(value).val() === vota) {
+                                $(value).click();
+                                $('#confirmar_cargo').text('Cancelar Indicação').val(idVotacao);
+                            }
+                        })
+                        verificaIndicados();
+                    }
+            })
+
             const btn = document.getElementById('confirmar_cargo');
             btn.addEventListener("click", function (e) {
                 e.preventDefault();
@@ -215,6 +237,7 @@
                             $.get( location.href + 'votacao', { id_cargo: idCargo })
                                 .done(function (data) {
                                     if (data.success) {
+                                        $('#confirmar_cargo').val(data.id_votacao);
                                         alertSuccess(data.msg)
                                     } else {
                                         alertWarning(data.msg)
@@ -231,7 +254,20 @@
                         alertWarning('Selecione pelo menos um cargo!')
                     }
                 } else {
-                    window.location.reload();
+                    let idCargo = $('#confirmar_cargo').val();
+                    $.get( location.href + 'votacao', { 'cancelar_votacao': idCargo })
+                        .done(function (data) {
+                            if (data.success) {
+                                alertSuccess(data.msg)
+                                setInterval('location.reload()', 3000)
+                            } else {
+                                alertWarning(data.msg)
+                                setInterval('location.reload()', 3000)
+                            }
+                        })
+                        .fail(function () {
+                            alertDanger("Erro na requisição");
+                        })
                 }
 
             })

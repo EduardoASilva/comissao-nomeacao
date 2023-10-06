@@ -8,11 +8,24 @@ from comissao.models import ListaCargos, Membros, Votacao, ListaIndicados
 @login_required(login_url='login')
 def index(request):
     if request.user.is_staff:
+        id_votacao = ''
+        vota = Votacao.objects.filter(finalizado=False)
+        if vota:
+            vota = vota.last()
+            id_votacao = vota.id
+            vota = vota.id_cargo.nome
+        if request.GET.get('cancelar_votacao'):
+            vota = Votacao.objects.filter(pk=request.GET.get('cancelar_votacao')).last()
+            vota.delete()
+
         lista_cargos = ListaCargos.objects.all()
         membro = Membros.objects.all()
         context = {
             'cargos': lista_cargos,
-            'membros': membro
+            'membros': membro,
+            'vota': vota,
+            'id_votacao': id_votacao
+
         }
         return render(request, 'index.html', context)
     else:
@@ -54,6 +67,7 @@ def votacao(request):
             if vota_andamento.id_cargo_id == int(id_cargo):
                 return JsonResponse({
                     'success': True,
+                    'id_votacao': vota_andamento.id,
                     'msg': f'Continuar com a votação {vota_andamento.id_cargo.nome} em andamento'})
             if vota_andamento:
                 return JsonResponse({
@@ -68,7 +82,7 @@ def votacao(request):
     elif request.GET.get('id_membro'):
         id_membro = request.GET.get('id_membro')
         id_votacao = request.GET.get('id_votacao')
-        vota = Votacao.objects.filter(id_cargo=id_votacao).last()
+        vota = Votacao.objects.filter(pk=id_votacao).last()
         list_indicados = ListaIndicados.objects.filter(id_votacao=vota.id)
         if list_indicados:
             list_indicados = list_indicados.get()
@@ -81,5 +95,19 @@ def votacao(request):
                 id_membro_indicado_id=id_membro,
                 id_membro_votou_id=request.user.id
             )
-        return redirect('index')
-
+            return JsonResponse({
+                'success': True,
+                'msg': f'Aguardando Votação'})
+    elif request.GET.get('cancelar_votacao'):
+        try:
+            id_votacao = request.GET.get('cancelar_votacao')
+            vota = Votacao.objects.filter(pk=id_votacao).last()
+            nome = vota.id_cargo.nome
+            vota.delete()
+            return JsonResponse({
+                'success': True,
+                'msg': f'Votação para {nome} cancelado com sucesso'})
+        except Exception as e:
+            return JsonResponse({
+                'success': False,
+                'msg': f'Erro ao cancelar votação "{e.args}"'})
