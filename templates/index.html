@@ -70,24 +70,32 @@
             <!-- Fim div Cargos -->
 
             <!-- inicio div Votação -->
-            <div class="col-3 content justify-content-center box border rounded-2  border-0" style="background-color: rgb(134, 134, 136);
+            <div class="col-3 flex-collumn content justify-content-center box border rounded-2 border-0 bg-adm" style="background-color: rgb(134, 134, 136);
             height: 71vh;">
-                <div style="height: 15%;">
-                    <h5 class="text-center mt-2">Votação</h5>
-                    <p class="text-center">Nomes</p>
+                <div class="" style="height: 15%;">
+                    <h5 id="nome_cargo" class="text-center mt-2">Cargo</h5>
+                    <p class="text-center">Nomes indicados</p>
                 </div>
-                <div class="m-auto mb-1" style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px; ">
-                    <div class="input-group input-group-sm mb-1">
-                        <span class="input-group-text"><input type="checkbox" name="" id=""/></span>
-                        <input type="text" class="form-control text-center" aria-label="Amount (to the nearest dollar)"
-                               value="Disabled readonly input" disabled readonly/>
-                        <span class="input-group-text">0</span>
+
+                <div class="cargos m-auto mb-1 " style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px;">
+                    <div>
+                            <div class="input-group input-group-sm mb-1 w-100">
+
+                                <div class="membros input-group-text bg-dark"
+                                     style="width: 100%; border: none; color: white;">
+                                    <input class="form-check-input mt-0" type="checkbox" value=""
+                                           id="checkbox">
+                                    <label class="form-check-label ms-2 w-100"
+                                           for="checkbox">Teste</label>
+                                </div>
+                            </div>
+
                     </div>
                 </div>
 
-                <div class="" style="height: 5%; margin: 0 10px 0 10px;">
-                    <button class="mb-2 w-100 btn btn-sm btn-success bottom-center" data-toggle="button">
-                        Finalizar Votação
+                <div style="height: 5%; margin: 0 10px 0 10px;">
+                    <button class="w-100 btn btn-sm btn-success bottom-center " data-toggle="button">
+                        Finalizar Indicação
                     </button>
                 </div>
             </div>
