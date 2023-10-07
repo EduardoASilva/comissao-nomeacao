@@ -3,17 +3,20 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 
 from comissao.models import ListaCargos, Membros, Votacao, ListaIndicados
+from comissao.templatetags.template_tags import abbreviate_name
 
 
 @login_required(login_url='login')
 def index(request):
     if request.user.is_staff:
         id_votacao = ''
+        estagio = ''
         vota = Votacao.objects.filter(finalizado=False)
         if vota:
             vota = vota.last()
             id_votacao = vota.id
             vota = vota.id_cargo.nome
+            estagio = 'indicacao'
         if request.GET.get('cancelar_votacao'):
             vota = Votacao.objects.filter(pk=request.GET.get('cancelar_votacao')).last()
             vota.delete()
@@ -24,7 +27,8 @@ def index(request):
             'cargos': lista_cargos,
             'membros': membro,
             'vota': vota,
-            'id_votacao': id_votacao
+            'id_votacao': id_votacao,
+            'estagio': estagio
 
         }
         return render(request, 'index.html', context)
@@ -68,7 +72,9 @@ def votacao(request):
                 return JsonResponse({
                     'success': True,
                     'id_votacao': vota_andamento.id,
-                    'msg': f'Continuar com a votação {vota_andamento.id_cargo.nome} em andamento'})
+                    'msg': f'Continuar com a votação {vota_andamento.id_cargo.nome} em andamento',
+                    'estagio': 'indicacao'
+                })
             if vota_andamento:
                 return JsonResponse({
                     'success': False,
@@ -111,3 +117,18 @@ def votacao(request):
             return JsonResponse({
                 'success': False,
                 'msg': f'Erro ao cancelar votação "{e.args}"'})
+
+
+def verifica_estagio(request):
+    if request.GET.get('estagio') == 'indicacao':
+        vota = Votacao.objects.filter(pk=request.GET.get('id_votacao')).last()
+        indicados = ListaIndicados.objects.filter(id_votacao_id=vota.id)
+        data = []
+        for i in indicados:
+            nome = abbreviate_name(i.id_membro_indicado.nome)
+            itens = {'id_membro': i.id_membro_indicado_id, 'nome_membro': nome}
+            data.append(itens)
+        context = {
+            'data': data
+        }
+        return JsonResponse(context)

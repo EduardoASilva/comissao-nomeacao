@@ -4,6 +4,7 @@
     {% if request.user.is_superuser %}
 
         <div class="container m-auto d-lg-flex gap-2 mt-2" style="height: 73vh; align-items: center;">
+            <input id="estagio" type="hidden" value="{{ estagio }}">
             <!-- Inicio div Lista de cargos -->
             <div class="col-3 content1 justify-content-center border rounded-2 text-center border-0 align-middle"
                  style="background-color: rgb(134, 134, 136);
@@ -15,7 +16,6 @@
                 <div class="" style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px;">
                     {% for cargo in cargos %}
                         <div class="input-group input-group-sm mb-1 w-100">
-
                             <div class="membros input-group-text bg-dark"
                                  style="width: 100%; border: none; color: white;">
                                 <input class="form-check-input mt-0 listCargos" type="checkbox" value="{{ cargo.nome }}"
@@ -38,27 +38,13 @@
             <!-- inicio div Cargos -->
             <div class="col-3 flex-collumn content justify-content-center box border rounded-2 border-0 bg-adm" style="background-color: rgb(134, 134, 136);
             height: 71vh;">
-                <div class="" style="height: 15%;">
+                <div style="height: 15%;">
                     <h5 id="nome_cargo" class="text-center mt-2">Cargo</h5>
-                    <p class="text-center">Nomes indicados</p>
+                    <p class="text-center">Nomes Indicados</p>
                 </div>
 
-                <div class="cargos m-auto mb-1 " style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px;">
-                    <div>
-                        {% for membro in membros %}
-                            <div class="input-group input-group-sm mb-1 w-100">
+                <div id="membros_votados" class="cargos m-auto mb-1 " style="height: 74%; overflow-y: scroll; padding: 0 10px 0 10px;">
 
-                                {#                                <div class="membros input-group-text bg-dark"#}
-                                {#                                     style="width: 100%; border: none; color: white;">#}
-                                {#                                    <input class="form-check-input mt-0" type="checkbox" value=""#}
-                                {#                                           id="checkbox{{ membro.id }}">#}
-                                {#                                    <label class="form-check-label ms-2 w-100"#}
-                                {#                                           for="checkbox{{ membro.id }}">{{ membro.nome|abbreviate_name }}</label>#}
-                                {#                                </div>#}
-                            </div>
-                        {% endfor %}
-
-                    </div>
                 </div>
 
                 <div style="height: 5%; margin: 0 10px 0 10px;">
@@ -150,28 +136,28 @@
         </div>
 
         <script>
-            function checkboxMembros(el){
+            function checkboxMembros(el) {
                 let checkboxMembro = document.querySelectorAll(".listMembros");
 
-                if (el.checked){
-                    for (const check of checkboxMembro){
-                        if (!check.checked){
+                if (el.checked) {
+                    for (const check of checkboxMembro) {
+                        if (!check.checked) {
                             check.disabled = true
                         }
                     }
-                }else{
-                    for (const check of checkboxMembro){
+                } else {
+                    for (const check of checkboxMembro) {
                         check.disabled = false
                     }
                 }
             }
 
-            function indicarMembro(){
+            function indicarMembro() {
                 $('.listMembros').each(function (index, value) {
                     if ($(value).is(':checked')) {
                         let idMembro = value.id.replace('checkbox', '')
                         let idVotacao = $('#id_votacao').val();
-                        $.get( location.href + 'votacao', { id_membro: idMembro, 'id_votacao': idVotacao })
+                        $.get(location.href + 'votacao', {id_membro: idMembro, 'id_votacao': idVotacao})
                             .done(function (data) {
                                 if (data.success) {
                                     alertSuccess(data.msg)
@@ -203,22 +189,43 @@
 {% block javascripts %}
     {% if user.is_authenticated and user.is_staff %}
         <script>
-            function verificaIndicados() {
-
-            }
-
-            $(window).on(`load`, function () {
-                let vota = '{{ vota }}';
-                let idVotacao = '{{ id_votacao }}'
-                    if (vota) {
-                        $('.listCargos').each(function (index, value) {
-                            if ($(value).val() === vota) {
-                                $(value).click();
-                                $('#confirmar_cargo').text('Cancelar Indicação').val(idVotacao);
+            function verificaEstagio() {
+                let estagio = $('#estagio').val();
+                let id_votacao = $('#id_votacao').val();
+                if (estagio === 'indicacao') {
+                    $.get(location.href + 'verifica_estagio', {'estagio': estagio, 'id_votacao': id_votacao})
+                        .done(function (data) {
+                            if (data.success) {
+                                let dados = data.data
+                                for (item of dados){
+                                    let html =
+                                        `<div class="input-group input-group-sm mb-1 w-100">
+                                            <div class="membros input-group-text bg-dark" style="width: 100%; border: none; color: white;">
+                                                <input class="form-check-input mt-0" type="checkbox" value=""
+                                                    id="checkbox${item.id_membro}">
+                                                <label class="form-check-label ms-2 w-100"
+                                                    for="checkbox${item.id_membro}">${item.nome_membro}</label>
+                                            </div>
+                                        </div>`
+                                    $('#membros_votados').html(html)
+                                }
                             }
                         })
-                        verificaIndicados();
-                    }
+                }
+            }
+
+            $(window).on('load', function () {
+                let vota = '{{ vota }}';
+                let idVotacao = '{{ id_votacao }}'
+                if (vota) {
+                    $('.listCargos').each(function (index, value) {
+                        if ($(value).val() === vota) {
+                            $(value).click();
+                            $('#confirmar_cargo').text('Cancelar Indicação').val(idVotacao);
+                        }
+                    })
+                    verificaEstagio();
+                }
             })
 
             const btn = document.getElementById('confirmar_cargo');
@@ -234,11 +241,13 @@
                             $(value).prop('disabled', true);
                             btn.innerText = 'Cancelar Indicação'
                             let idCargo = value.id.replace('checkbox', '')
-                            $.get( location.href + 'votacao', { id_cargo: idCargo })
+                            $.get(location.href + 'votacao', {id_cargo: idCargo})
                                 .done(function (data) {
                                     if (data.success) {
                                         $('#confirmar_cargo').val(data.id_votacao);
+                                        $('#estagio').val(data.estagio)
                                         alertSuccess(data.msg)
+                                        verificaEstagio();
                                     } else {
                                         alertWarning(data.msg)
                                     }
@@ -255,7 +264,7 @@
                     }
                 } else {
                     let idCargo = $('#confirmar_cargo').val();
-                    $.get( location.href + 'votacao', { 'cancelar_votacao': idCargo })
+                    $.get(location.href + 'votacao', {'cancelar_votacao': idCargo})
                         .done(function (data) {
                             if (data.success) {
                                 alertSuccess(data.msg)
